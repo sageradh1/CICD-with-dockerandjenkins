@@ -4,7 +4,7 @@ pipeline {
 	        stage('Check who the user is ') {
 	        /* Cloning the repository to our workspace */
 		        steps {
-		        	whoami
+		        	echo whoami
 		        }
 		    }
 
