@@ -7,7 +7,7 @@ app.config["ENV"] = "development"
 #changes
 @app.route("/")
 def home():
-	return "Home page"
+	return "Jenkins pipeline is working"
 
 if __name__=="__main__":
 	app.run(debug=True,host='0.0.0.0',port=4000)
