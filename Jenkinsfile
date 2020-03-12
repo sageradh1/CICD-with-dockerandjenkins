@@ -1,12 +1,7 @@
 pipeline {
 	agent any
 	    stages {
-	        stage('Check who the user is ') {
-	        /* Cloning the repository to our workspace */
-		        steps {
-		        	echo whoami
-		        }
-		    }
+
 
 	        stage('Cloning Source Repository') {
 	        /* Cloning the repository to our workspace */
