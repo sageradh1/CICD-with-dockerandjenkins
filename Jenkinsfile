@@ -10,8 +10,11 @@ pipeline {
 
 		   stage('Stop and Remove old container') {
 		        steps {
-		        sh 'sudo docker container stop asmiflaskapp'
-		        sh 'sudo docker container rm asmiflaskapp'
+
+                sh '''
+                    sudo docker container stop asmiflaskapp
+                    sudo docker container rm asmiflaskapp
+                '''
 		        }
 		   }
 
