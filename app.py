@@ -4,7 +4,7 @@ app = Flask(__name__)
 
 app.config["ENV"] = "development"
 
-
+#changes
 @app.route("/")
 def home():
 	return "Home page"
