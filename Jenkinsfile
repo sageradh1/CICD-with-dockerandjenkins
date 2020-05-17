@@ -10,32 +10,42 @@ pipeline {
 		        }
 	   		}
 
-		   stage('Stop and Remove old container') {
-		        steps {
+			/* For first run there is no need to remove old images and container */
 
-                sh '''
-                    sudo docker container stop asmiflaskapp
-                    sudo docker container rm asmiflaskapp
-                '''
+
+		   stage('Build first image') {
+		        steps {
+		        	sh 'sudo docker build -t asmi-clothing-backend:1.0.0 .'
 		        }
 		   }
 
-		   stage('Remove old image and build new one') {
-		        steps {
-		        sh 'sudo docker image rm alpine-flask:1.0.0'
-		        sh 'sudo docker build -t alpine-flask:1.0.0 .'
-		        }
-		   }
+			/* For later runs*/
+		//    stage('Stop and Remove old container') {
+		//         steps {
+
+        //         sh '''
+        //             sudo docker container stop asmi-clothing-api-app
+        //             sudo docker container rm asmi-clothing-api-app
+        //         '''
+		//         }
+		//    }
+
+		//    stage('Remove old image and build new one') {
+		//         steps {
+		//         sh 'sudo docker image rm asmi-clothing-backend:1.0.0'
+		//         sh 'sudo docker build -t asmi-clothing-backend:1.0.0 .'
+		//         }
+		//    }
 
 		   stage('Run Image') {
 		        steps {
-		        sh 'sudo docker run -d -p 5000:4000 --name asmiflaskapp alpine-flask:1.0.0'
+		        	sh 'sudo docker run -d -p 5000:4000 --name asmi-clothing-api-app asmi-clothing-backend:1.0.0'
 		        }
 		   }
 		   stage('Testing'){
 		        steps {
 		            echo 'Testing..'
-		            }
+		        }
 		   }
 
     	}
