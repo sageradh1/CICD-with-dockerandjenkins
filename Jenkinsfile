@@ -2,7 +2,6 @@ pipeline {
 	agent any
 	    stages {
 
-
 	        stage('Cloning Source Repository') {
 	        /* Cloning the repository to our workspace */
 		        steps {
@@ -11,8 +10,6 @@ pipeline {
 	   		}
 
 			/* For first run there is no need to remove old images and container */
-
-
 		   stage('Build first image') {
 		        steps {
 		        	sh 'sudo docker build -t asmi-clothing-backend:1.0.0 .'
@@ -47,6 +44,5 @@ pipeline {
 		            echo 'Testing..'
 		        }
 		   }
-
     	}
 }
