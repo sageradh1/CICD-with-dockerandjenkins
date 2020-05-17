@@ -15,7 +15,7 @@ pipeline {
 
 		   stage('Build first image') {
 		        steps {
-		        	sh 'sudo docker build -t asmi-clothing-backend:1.0.0 Dockerfile'
+		        	sh 'sudo docker build -t asmi-clothing-backend:1.0.0 .'
 		        }
 		   }
 
