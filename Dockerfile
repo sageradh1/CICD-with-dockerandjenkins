@@ -1,4 +1,6 @@
-FROM frolvlad/alpine-python-machinelearning:latest
+#FROM frolvlad/alpine-python
+
+FROM jfloff/alpine-python:latest
 
 RUN pip install --upgrade pip
 
