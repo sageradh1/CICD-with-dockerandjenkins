@@ -10,29 +10,29 @@ pipeline {
 	   		}
 
 			/* For first run there is no need to remove old images and container */
-		   stage('Build first image') {
+		//    stage('Build first image') {
+		//         steps {
+		//         	sh 'sudo docker build -t asmi-clothing-backend:1.0.0 .'
+		//         }
+		//    }
+
+			/* For later runs*/
+		   stage('Stop and Remove old container') {
 		        steps {
-		        	sh 'sudo docker build -t asmi-clothing-backend:1.0.0 .'
+
+                sh '''
+                    sudo docker container stop asmi-clothing-api-app
+                    sudo docker container rm asmi-clothing-api-app
+                '''
 		        }
 		   }
 
-			/* For later runs*/
-		//    stage('Stop and Remove old container') {
-		//         steps {
-
-        //         sh '''
-        //             sudo docker container stop asmi-clothing-api-app
-        //             sudo docker container rm asmi-clothing-api-app
-        //         '''
-		//         }
-		//    }
-
-		//    stage('Remove old image and build new one') {
-		//         steps {
-		//         sh 'sudo docker image rm asmi-clothing-backend:1.0.0'
-		//         sh 'sudo docker build -t asmi-clothing-backend:1.0.0 .'
-		//         }
-		//    }
+		   stage('Remove old image and build new one') {
+		        steps {
+					sh 'sudo docker image rm asmi-clothing-backend:1.0.0'
+					sh 'sudo docker build -t asmi-clothing-backend:1.0.0 .'
+		        }
+		   }
 
 		   stage('Run Image') {
 		        steps {
